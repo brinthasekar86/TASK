@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .wrapper {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    progress,
+    /* All HTML5 progress enabled browsers */
+
+    progress[role]
+    /* polyfill */
+
+    {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        background-size: auto;
+    }
+    progress[value^="230"]::-moz-progress-bar,
+    progress[value^="258"]::-moz-progress-bar {
+        background-color: red;
+    }
+    progress[value^="230"]::-webkit-progress-value,
+    progress[value^="258"]::-webkit-progress-value {
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div class="w3-container" style="width: 50%;margin: 0 auto;text-align: center;">
+
+        <h1>Progress Bars Demo</h1>
+        <div class="w3-light-grey">
+            <progress id='progress1' value='62' max='220' style="height:50px;width:100%"><span>0</span>%</progress>
+            <span id='barPercent'>62%</span>
+        </div>
+        <br>
+        <div class="w3-light-grey">
+            <progress id='progress2' value='45' max='220' style="height:50px;width:100%"><span>0</span>%</progress>
+            <span id='barPercent2'>45%</span>
+        </div>
+        <br>
+
+        <div class="w3-light-grey">
+            <progress id='progress3' value='62' max='220' style="height:50px;width:100%"><span>0</span>%</progress>
+            <span id='barPercent3'>62%</span>
+        </div>
+        <br>
+
+        <div class='buttons'>
+            <select id="barDemo" onchange="ChangeProgressBar()">
+                <option value="progress1">#Progress1</option>
+                <option value="progress2">#Progress2</option>
+                <option value="progress3">#Progress3</option>
+            </select>
+
+            <input id='button1' type='button' value='10' />
+            <input id='button2' type='button' value='38' />
+            <input id='button3' type='button' value='-13' />
+            <input id='button4' type='button' value='-18' />
+        </div>
+    </div>
+    <script>
+        var bars;
+        var barsval;
+
+        function ChangeProgressBar() {
+            var select = document.getElementById("barDemo").value;
+            if (select == 'progress1') {
+                document.getElementById('progress1').value;
+            } else if (select == 'progress2') {
+                document.getElementById('progress2').value;
+            } else {
+                document.getElementById('progress3').value;
+            }
+        }
+
+        // progress bar
+        var pBar = document.getElementById('progress1');
+        var pBar2 = document.getElementById('progress2');
+        var pBar3 = document.getElementById('progress3');
+        var val = document.getElementById('barPercent');
+        var val2 = document.getElementById('barPercent2');
+        var val3 = document.getElementById('barPercent3');
+        var button1 = document.getElementById('button1');
+        var button2 = document.getElementById('button2');
+        var button3 = document.getElementById('button3');
+        var button4 = document.getElementById('button4');
+
+        var updateProgress = function(valuea, barss, barsvald) {
+                barss.value = valuea;
+                var percent = Math.floor(valuea);
+                barss.getElementsByTagName('span')[0].innerHTML = percent;
+                barsvald.innerHTML = percent + '%';
+            }
+            // Click events for buttons
+        button1.addEventListener('click', function() {
+            var select = document.getElementById("barDemo").value;
+            if (select == 'progress1') {
+                bars = pBar;
+                barsval = val;
+            } else if (select == 'progress2') {
+                bars = pBar2;
+                barsval = val2;
+            } else if (select == 'progress3') {
+                bars = pBar3;
+                barsval = val3;
+            }
+            var currentVal = parseInt(bars.value);
+            if (currentVal <= 230) updateProgress(parseInt(currentVal + 10), bars, barsval);
+        }, false);
+        button2.addEventListener('click', function() {
+            var select = document.getElementById("barDemo").value;
+            if (select == 'progress1') {
+                bars = pBar;
+                barsval = val;
+            } else if (select == 'progress2') {
+                bars = pBar2;
+                barsval = val2;
+            } else if (select == 'progress3') {
+                bars = pBar3;
+                barsval = val3;
+            }
+            var currentVal = parseInt(bars.value);
+            if (currentVal <= 230)
+                updateProgress(parseInt(currentVal + 38), bars, barsval);
+        }, false);
+
+        button3.addEventListener('click', function() {
+            var select = document.getElementById("barDemo").value;
+            if (select == 'progress1') {
+                bars = pBar;
+                barsval = val;
+            } else if (select == 'progress2') {
+                bars = pBar2;
+                barsval = val2;
+            } else if (select == 'progress3') {
+                bars = pBar3;
+                barsval = val3;
+            }
+            var currentVal = parseInt(bars.value);
+            if (currentVal <= 230)
+                updateProgress(parseInt(currentVal - 13), bars, barsval);
+        }, false);
+
+        button4.addEventListener('click', function() {
+            var select = document.getElementById("barDemo").value;
+            if (select == 'progress1') {
+                bars = pBar;
+                barsval = val;
+            } else if (select == 'progress2') {
+                bars = pBar2;
+                barsval = val2;
+            } else if (select == 'progress3') {
+                bars = pBar3;
+                barsval = val3;
+            }
+            var currentVal = parseInt(bars.value);
+            if (currentVal <= 230)
+                updateProgress(parseInt(currentVal - 18), bars, barsval);
+        }, false);
+    </script>
+
+</body>
+
+</html>
